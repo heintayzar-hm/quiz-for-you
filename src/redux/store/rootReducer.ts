@@ -2,6 +2,9 @@ import { combineReducers } from "@reduxjs/toolkit";
 import quizReducer from "../slices/quiz/quizSlice";
 
 
-export default combineReducers({
+const rootReducer = combineReducers({
     quiz: quizReducer,
 });
+
+
+export default rootReducer;

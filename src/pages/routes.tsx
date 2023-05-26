@@ -1,11 +1,15 @@
+import { ROUTES } from "../constants"
+import Home from "./HomePage/HomePage"
+import QuizPage from "./QuizPage/QuizPage"
+
 export const routes = [
     {
-        path: "/",
-        element: <>Hein</>,
+        path: ROUTES.HOME,
+        element: <Home />,
     },
     {
-        path: "/home",
-        element: <>home</>,
+        path: ROUTES.QUIZ,
+        element: <QuizPage />,
     }
 ]
 

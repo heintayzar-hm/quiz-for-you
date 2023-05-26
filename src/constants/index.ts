@@ -4,3 +4,17 @@ export const SLICES = {
     },
     // other slices
 }
+
+
+export const ROUTES = {
+    HOME: '/',
+    QUIZ: '/quiz',
+    // other routes
+}
+
+export const API = {
+    BASE_URL: '.',
+    ENDPOINTS: {
+        QUIZ: '/quiz.json',
+    }
+}

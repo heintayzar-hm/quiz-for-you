@@ -1,17 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore } from 'redux-persist';
+// import { persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './rootReducer';
-
-const middleWares = [logger, thunk];
+import { useDispatch } from 'react-redux';
 
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: middleWares,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(
+    {
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+      }
+    }
+  ).concat(thunk, logger),
 });
 
-const persistor = persistStore(store);
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
 
-export { store, persistor };
+export const useAppDispatch: () => AppDispatch = useDispatch // Export a hook that can be reused to resolve types
+
+export { store };
