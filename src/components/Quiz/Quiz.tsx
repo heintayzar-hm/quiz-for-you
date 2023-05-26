@@ -29,7 +29,7 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
     const handleAnswer = () => {
         setShowAnswer(!showAnswer);
         setStop(!stop);
-        if (selectedOption.value === answer) {
+        if (selectedOption.id === answer) {
             dispatch(increaseScore())
         }
     }
@@ -41,7 +41,6 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
     const handleQuestion = () => {
         nextQuestion(id);
     }
-
 
     return (
         <div id={`${id}`}>

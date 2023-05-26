@@ -6,7 +6,7 @@ import Quiz from "../../components/Quiz/Quiz"
 import { Question } from "../../types"
 import { useNavigate } from "react-router-dom"
 import { ROUTES } from "../../constants"
-import { setTotalScore } from "../../redux/slices/results/resultSlice"
+import { resetScore, setFinished, setTotalScore } from "../../redux/slices/results/resultSlice"
 
 const QuizPage = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -15,18 +15,21 @@ const QuizPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getQuizzes()).then((data) => {
-            if (!data.payload) {
-                return;
-            }
-            setActiveQuiz(data.payload[0] as Question)
-            dispatch(setTotalScore(data.payload.length))
-        })
-    }, [dispatch])
+            dispatch(getQuizzes()).then((data) => {
+                if (!data.payload) {
+                    return;
+                }
+                dispatch(setTotalScore(data.payload.length))
+                setActiveQuiz(data.payload[0] as Question)
+            })
+
+        dispatch(resetScore());
+        }, [dispatch, quizzes.length])
 
     const handleNextQuestion = (id: string) => {
         const index = quizzes.findIndex((quiz) => quiz.id == id);
         if (index == quizzes.length - 1) {
+            dispatch(setFinished(true));
             navigate(ROUTES.RESULTS);
             return;
         }

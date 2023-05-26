@@ -27,6 +27,15 @@ const resetScoreFunc = (state: ResultsState) => {
     )
 }
 
+const setFinishedFunc = (state: ResultsState, action: PayloadAction<boolean>) => {
+    return (
+        {
+            ...state,
+            finished: action.payload,
+        }
+    )
+}
+
 const setTotalScoreFunc = (state: ResultsState, action: PayloadAction<number>) => {
     return (
         {
@@ -43,6 +52,7 @@ const resultsSlice = createSlice({
         increaseScore: increaseScoreFunc,
         resetScore: resetScoreFunc,
         setTotalScore: setTotalScoreFunc,
+        setFinished: setFinishedFunc,
   },
   extraReducers: () => {
     // thunk
@@ -50,6 +60,6 @@ const resultsSlice = createSlice({
 });
 // if needed to export thunk
 
-export const { increaseScore, resetScore, setTotalScore } = resultsSlice.actions;
+export const { increaseScore, resetScore, setTotalScore, setFinished } = resultsSlice.actions;
 
 export default resultsSlice.reducer;

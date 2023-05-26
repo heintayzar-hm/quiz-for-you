@@ -9,6 +9,7 @@ export const SLICES = {
             loading: false,
             score: 0,
             total: 0,
+            finished: false,
         } as ResultsState,
     }
     // other slices

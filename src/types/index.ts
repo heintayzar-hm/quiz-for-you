@@ -19,4 +19,5 @@ export interface QuizState {
 export interface ResultsState {
       score: number;
       total: number;
+      finished: boolean;
 }
