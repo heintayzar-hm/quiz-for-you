@@ -15,3 +15,8 @@ export interface QuizState {
     loading: boolean;
     error: string | null;
 }
+
+export interface ResultsState {
+      score: number;
+      total: number;
+}

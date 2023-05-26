@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { routes, layoutRoutes, invalidRoute } from "./pages/routes"
+import { routes, invalidRoute, lazyRoutes } from "./pages/routes"
+import { Suspense } from "react"
 
 const App = ()  => {
   return (
@@ -14,18 +15,19 @@ const App = ()  => {
             })
 
           }
-
           {
-            // if the roues is protected or authenticated, then we need a Layout.
-            layoutRoutes.map((route, index) => {
+            // lazy routes
+            lazyRoutes.map((route, index) => {
               return (
-                <Route element={route.layout} key={index}>
-                  <Route path={route.path} element={route.element} />
-                </Route>
+
+                <Route key={index} path={route.path} element={
+                  <Suspense fallback={route.fallback}>
+                    {route.element}
+                  </Suspense>
+                  } />
               )
             })
           }
-
           {
             // if there is no route, then we need a 404 page.
             <Route path={invalidRoute.path} element={invalidRoute.element} />

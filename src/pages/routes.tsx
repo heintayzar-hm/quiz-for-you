@@ -1,6 +1,7 @@
+import React from "react"
 import { ROUTES } from "../constants"
 import Home from "./HomePage/HomePage"
-import QuizPage from "./QuizPage/QuizPage"
+import ResultPage from "./ResultPage/ResultPage"
 
 export const routes = [
     {
@@ -8,16 +9,18 @@ export const routes = [
         element: <Home />,
     },
     {
-        path: ROUTES.QUIZ,
-        element: <QuizPage />,
+        path: ROUTES.RESULTS,
+        element: <ResultPage />,
     }
 ]
 
-export const layoutRoutes = [
+// eslint-disable-next-line react-refresh/only-export-components
+const QuizPage = React.lazy(() => import("./QuizPage/QuizPage"))
+export const lazyRoutes = [
     {
-        path: "/protected",
-        element: <>protected</>,
-        layout: <></>,
+        path: ROUTES.QUIZ,
+        element: <QuizPage />,
+        fallback: <div>Loading...</div>
     }
 ]
 
