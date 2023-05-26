@@ -2,6 +2,7 @@ import React from "react"
 import { ROUTES } from "../constants"
 import Home from "./HomePage/HomePage"
 import ResultPage from "./ResultPage/ResultPage"
+import Loading from "../components/Loading/Loading"
 
 export const routes = [
     {
@@ -20,7 +21,7 @@ export const lazyRoutes = [
     {
         path: ROUTES.QUIZ,
         element: <QuizPage />,
-        fallback: <div>Loading...</div>
+        fallback: <Loading />
     }
 ]
 

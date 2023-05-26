@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { routes, invalidRoute, lazyRoutes } from "./pages/routes"
 import { Suspense } from "react"
+import {withErrorBoundary} from 'react-error-boundary'
+import Error from "./components/Error/Error"
 
 const App = ()  => {
   return (
@@ -39,4 +41,8 @@ const App = ()  => {
   )
 }
 
-export default App
+const AppErrorBoundary = withErrorBoundary(App, {
+  fallback: <Error />
+})
+
+export default AppErrorBoundary

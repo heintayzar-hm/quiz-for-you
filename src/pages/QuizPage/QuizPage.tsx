@@ -39,6 +39,7 @@ const QuizPage = () => {
             <h1>Quiz Page</h1>
             <main>
                 {
+                        activeQuiz &&
                         <>
                             {
                                  quizzes.map((quiz) => {
