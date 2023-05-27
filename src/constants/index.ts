@@ -15,6 +15,9 @@ export const SLICES = {
     // other slices
 }
 
+export const APP = {
+    email: "heintayzarhm@gmail.com",
+}
 
 export const ROUTES = {
     HOME: '/',

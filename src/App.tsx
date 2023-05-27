@@ -7,7 +7,9 @@ import Error from "./components/Error/Error"
 const App = ()  => {
   return (
     <>
-      <BrowserRouter>
+    <div className="bg-primary text-white tracking-wider">
+
+          <BrowserRouter>
         <Routes>
           {
             routes.map((route, index) => {
@@ -37,6 +39,7 @@ const App = ()  => {
 
         </Routes>
       </BrowserRouter>
+    </div>
     </>
   )
 }
