@@ -63,9 +63,9 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
             </ul>
             {
                 showAnswer ?
-                <Button type='button' onClick={handleQuestion}>Next</Button>
+                <Button type='button' onClick={handleQuestion} text="Next"/>
                 :
-                <Button type='submit' onClick={handleAnswer}>Submit</Button>
+                <Button type='submit' onClick={handleAnswer} text="Submit"/>
 
             }
             {

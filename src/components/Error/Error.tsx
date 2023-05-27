@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 
 const Error = () => {
     return (
-        <div className="h-screen w-full flex items-center justify-center bg-primary flex-col gap-3">
+        <div className="h-screen w-full flex items-center justify-center bg-primary text-white flex-col gap-3">
             <p className="text-2xl">Oops!</p> <br />
             <p>Something went wrong!!! Please try again later.</p>
             <p>Or you can reload the page.

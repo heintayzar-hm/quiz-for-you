@@ -9,6 +9,10 @@ export default {
         primary: "#333333",
         secondary: "cyan",
         tertiary: "#E5E5E5",
+      },
+      fontFamily: {
+        primary: ["Libre Baskerville", "sans-serif"],
+        secondary: ["Mukta", "sans-serif"],
       }
     },
   },

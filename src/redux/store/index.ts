@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './rootReducer';
 import { useDispatch } from 'react-redux';
+import persistStore from 'redux-persist/es/persistStore';
 
 
 const store = configureStore({
@@ -23,5 +24,6 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 export const useAppDispatch: () => AppDispatch = useDispatch // Export a hook that can be reused to resolve types
+const persistor = persistStore(store);
 
-export { store };
+export { store, persistor };

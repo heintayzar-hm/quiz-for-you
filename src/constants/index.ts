@@ -10,6 +10,7 @@ export const SLICES = {
             score: 0,
             total: 0,
             finished: false,
+            name: '',
         } as ResultsState,
     }
     // other slices
@@ -17,6 +18,9 @@ export const SLICES = {
 
 export const APP = {
     email: "heintayzarhm@gmail.com",
+    animation: {
+        y: '-100px',
+    }
 }
 
 export const ROUTES = {

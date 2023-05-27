@@ -20,4 +20,5 @@ export interface ResultsState {
       score: number;
       total: number;
       finished: boolean;
+      name: string;
 }

@@ -1,6 +1,18 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import quizReducer from "../slices/quiz/quizSlice";
 import resultReducer from "../slices/results/resultSlice";
+import storage from 'redux-persist/lib/storage'
+// store in redux persist
+import { persistReducer } from "redux-persist";
+
+const persistConfig = {
+	// Root
+	key: "root",
+	storage,
+	whitelist: [
+		"results",
+	],
+};
 
 
 const rootReducer = combineReducers({
@@ -8,5 +20,10 @@ const rootReducer = combineReducers({
     results: resultReducer
 });
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default rootReducer;
+
+export type RootState = ReturnType<typeof rootReducer>;
+
+
+export default persistedReducer;

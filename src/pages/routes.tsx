@@ -1,10 +1,22 @@
+/* eslint-disable react-refresh/only-export-components */
 import React from "react"
 import { ROUTES } from "../constants"
-import Home from "./HomePage/HomePage"
-import ResultPage from "./ResultPage/ResultPage"
 import Loading from "../components/Loading/Loading"
 
 export const routes = [
+
+]
+
+const QuizPage = React.lazy(() => import("./QuizPage/QuizPage"))
+const Home = React.lazy(() => import("./HomePage/HomePage"))
+const ResultPage = React.lazy(() => import("./ResultPage/ResultPage"))
+
+export const lazyRoutes = [
+    {
+        path: ROUTES.QUIZ,
+        element: <QuizPage />,
+        fallback: <Loading />
+    },
     {
         path: ROUTES.HOME,
         element: <Home />,
@@ -12,16 +24,6 @@ export const routes = [
     {
         path: ROUTES.RESULTS,
         element: <ResultPage />,
-    }
-]
-
-// eslint-disable-next-line react-refresh/only-export-components
-const QuizPage = React.lazy(() => import("./QuizPage/QuizPage"))
-export const lazyRoutes = [
-    {
-        path: ROUTES.QUIZ,
-        element: <QuizPage />,
-        fallback: <Loading />
     }
 ]
 

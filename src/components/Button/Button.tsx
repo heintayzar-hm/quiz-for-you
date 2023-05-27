@@ -1,7 +1,8 @@
 import { gsap } from "gsap";
 import PropTypes from "prop-types";
 import { useRef } from "react";
-
+import { APP } from "../../constants";
+import { v4 } from "uuid";
 export type ButtonProps = {
     text: string;
     onClick?: () => void;
@@ -16,7 +17,7 @@ const Button = ({ text, ...props }: ButtonProps) => {
     const handleMouseEnter = () => {
         if (!buttonRef.current) return;
         gsap.to(buttonRef.current.children, {
-          transform: "translate(0px, -10px)",
+          transform: `translate(0px,${APP.animation.y} )`,
             duration: 0.3,
             opacity: 0,
             stagger: 0.05,
@@ -45,23 +46,21 @@ const Button = ({ text, ...props }: ButtonProps) => {
     >
         <span className="relative z-10 js-button-text">
             <div style={{display: "block", textAlign: "center", position: "relative"}} >
-                <div className=""
-                    style={{ display: "block", position: "relative", zIndex: 10, textAlign: "center" }}
-                    ref={buttonRef}
-                >
+                <div style={{ display: "block", position: "relative", zIndex: 10, textAlign: "center" }} ref={buttonRef}>
                     {
-                        text.split("").map((letter) => {
+                        text.split("").map((letter, index) => {
                             if (letter === " ") {
                                 return (
-                           <span className=""> </span>
+                           <span className="" key={index}> </span>
                                 )
                                }
                             return (
-                                <>
+
                                     <div
+                                        key={v4()}
                                     style={{ display: "inline-block", position: "relative", zIndex: 10 }}
-                                    >{letter}</div>
-                                </>
+                                >{letter}</div>
+
                             )
                         })
                     }
