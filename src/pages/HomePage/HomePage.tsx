@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useNavigate } from "react-router-dom";
 import Explanation from "../../components/Explanation/Explanation";
+import { ROUTES } from "../../constants";
 const components = ["component-1", "component-2"]
 
 const HomePage = () => {
@@ -33,7 +34,7 @@ const HomePage = () => {
             />
     } else {
         renderComponent = <Explanation
-            changePage={() => navigate("/quiz")}
+            changePage={() => navigate(ROUTES.QUIZ)}
         />
     }
 

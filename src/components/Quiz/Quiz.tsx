@@ -10,6 +10,7 @@ import { increaseScore } from '../../redux/slices/results/resultSlice';
 import { AppDispatch } from '../../redux/store';
 import TextWriter from '../TextWriter/TextWriter';
 import { answerFormat } from '../../helper';
+import { COMPONENTS } from '../../constants';
 
 export interface QuizProps {
     question: string,
@@ -74,9 +75,9 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
             </ul>
             {
                 showAnswer ?
-                <Button type='button' onClick={handleQuestion} text="Next"/>
+                    <Button type='submit' onClick={handleQuestion} text={ COMPONENTS.Quiz.button2} />
                 :
-                <Button type='submit' onClick={handleAnswer} text="Submit"/>
+                    <Button type='button' onClick={handleAnswer} text={COMPONENTS.Quiz.button1} />
 
             }
             {

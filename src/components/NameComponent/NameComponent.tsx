@@ -6,6 +6,7 @@ import Input from "../Input/Input";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { setUserName } from "../../redux/slices/results/resultSlice";
+import { COMPONENTS } from "../../constants";
 
 export interface NameComponentProps {
     handleComponent: () => void,
@@ -29,19 +30,19 @@ const NameComponent = ({ handleComponent }: NameComponentProps) => {
     }
 
     return (
-        <div className="h-screen w-full flex items-center justify-center flex-col gap-10 bg-2">
+        <div className="h-screen w-full flex items-center justify-center flex-col gap-10 bg-2" id={COMPONENTS.NameComponent.id}>
 
             <TextWriter
-                text="What's your name, Warrior?"
-                className="text-4xl "
+                text={COMPONENTS.NameComponent.title}
+                className="sm:text-4xl text-xl"
                 OnComplete={showInputHandler}
             />
             {
                 showInput ? (
                     <ElementAnimation>
-                        <div className="flex gap-10">
+                        <div className="flex flex-col gap-10 sm:flex ">
                         <Input type="text" onChange={nameHandler} value={name}  />
-                        <Button text="That's my Name"
+                        <Button text={COMPONENTS.NameComponent.button}
                             onClick={submitHandler}
                         />
                         </div>

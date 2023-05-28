@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../constants";
+import { APP, COMPONENTS, ROUTES } from "../../constants";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ const ResultPage = () => {
         }
     })
     const percentage = (score / total) * 100;
-    const success = percentage > 40;
+    const success = percentage > APP.requiredMarksPercent;
     const background = success ? "bg-4" : "bg-5";
     return (
 
@@ -29,14 +29,14 @@ const ResultPage = () => {
                     {
                         success ?
                             <div className="flex gap-5 flex-col">
-                                <TextWriter text="Congratulations!You have successfully completed the quiz and saved the world from the evil forces."></TextWriter>
-                                <ElementAnimation> <Button onClick={() => setShowCertificate(true)} text="Get Your Certificate"/></ElementAnimation>
-                                <Button onClick={() => navigate(ROUTES.HOME)} text="Retake"/>
+                                <TextWriter text={ COMPONENTS.RESULTS.successText}></TextWriter>
+                                <ElementAnimation> <Button onClick={() => setShowCertificate(true)} text={COMPONENTS.RESULTS.getYourCertificate} /></ElementAnimation>
+                                <Button onClick={() => navigate(ROUTES.HOME)} text={COMPONENTS.RESULTS.retakeButton } />
                             </div>
                             :
                             <div className="flex gap-5 flex-col">
-                                <TextWriter text="Sorry! You have failed to save the world!! Don't worry gods are merciful and give you a second chance."></TextWriter>
-                                <ElementAnimation> <Button onClick={() => navigate(ROUTES.HOME)} text="Retake"/></ElementAnimation>
+                                <TextWriter text={COMPONENTS.RESULTS.failText}></TextWriter>
+                                <ElementAnimation> <Button onClick={() => navigate(ROUTES.HOME)} text={ COMPONENTS.RESULTS.retakeButton } /></ElementAnimation>
                             </div>
                     }
                 </div>
@@ -44,7 +44,7 @@ const ResultPage = () => {
             {
                 success && showCertificate ?
                     <ElementAnimation>
-                        <CertificateGenerator name={name} />
+                        <CertificateGenerator name={name} text={COMPONENTS.RESULTS.downLoadText} />
                     </ElementAnimation>
                     :
                     <></>

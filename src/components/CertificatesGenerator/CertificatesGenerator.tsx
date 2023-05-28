@@ -3,10 +3,12 @@ import html2canvas from "html2canvas";
 import { useRef } from "react";
 import Button from "../Button/Button";
 import Template from "../../assets/templates/template.png"
+import { APP } from "../../constants";
 export interface CertificateGeneratorProps {
   name: string;
+  text: string;
 }
-const CertificateGenerator = ({ name }: CertificateGeneratorProps) => {
+const CertificateGenerator = ({ name, text }: CertificateGeneratorProps) => {
     const certificateRef = useRef<HTMLDivElement>(null);
   const captureCertificate = () => {
       const certificateElement = certificateRef.current
@@ -15,7 +17,7 @@ const CertificateGenerator = ({ name }: CertificateGeneratorProps) => {
       const dataURL = canvas.toDataURL();
       const link = document.createElement("a");
       link.href = dataURL;
-      link.download = "certificate.png";
+      link.download = APP.certifcateName;
       link.click();
     });
   };
@@ -29,7 +31,7 @@ const CertificateGenerator = ({ name }: CertificateGeneratorProps) => {
           <div>{name}</div>
         </div>
       </div>
-      <Button onClick={captureCertificate} text="Download Certificate"></Button>
+      <Button onClick={captureCertificate} text={text}></Button>
     </div>
   );
 };
