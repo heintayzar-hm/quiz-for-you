@@ -40,12 +40,12 @@ const TextWriter = ({ text, className, OnComplete }: TextWriterProps) => {
                 text.split(" ").map((char, index) => {
 
                     return (
-                        <>
-                            <span key={index} className="inline-block relative">
+                        <span key={index}>
+                            <span className="inline-block relative">
                             {char}
                             </span>
                             <span> </span>
-                        </>
+                        </span>
                     )
                 })
     }

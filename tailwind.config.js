@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         primary: ["Libre Baskerville", "sans-serif"],
         secondary: ["Mukta", "sans-serif"],
+        tertiary: ["Cinzel", "sans-serif"],
       }
     },
   },

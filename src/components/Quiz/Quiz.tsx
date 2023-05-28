@@ -8,6 +8,8 @@ import Timer from '../Timer/Timer';
 import { useDispatch } from 'react-redux';
 import { increaseScore } from '../../redux/slices/results/resultSlice';
 import { AppDispatch } from '../../redux/store';
+import TextWriter from '../TextWriter/TextWriter';
+import { answerFormat } from '../../helper';
 
 export interface QuizProps {
     question: string,
@@ -16,10 +18,12 @@ export interface QuizProps {
     id: string,
     nextQuestion: (id:string) => void,
 }
+
 const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
     const uniqueId = uuidv4();
     const [showAnswer, setShowAnswer] = useState(false);
     const [stop, setStop] = useState(false);
+    const [answerText, setAnswerText] = useState('');
     const dispatch = useDispatch<AppDispatch>()
     const [selectedOption, setSelectedOption] = useState({
         id: '',
@@ -27,11 +31,18 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
     } as Choice);
 
     const handleAnswer = () => {
-        setShowAnswer(!showAnswer);
-        setStop(!stop);
-        if (selectedOption.id === answer) {
+        handleTimer()
+        if (selectedOption.value === answer) {
             dispatch(increaseScore())
         }
+        if (!stop) {
+            setAnswerText(selectedOption.value)
+        }
+    }
+
+    const handleTimer = () => {
+        setShowAnswer(!showAnswer);
+        setStop(!stop);
     }
 
     const handleSelectedOption = (option: Choice) => {
@@ -41,11 +52,10 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
     const handleQuestion = () => {
         nextQuestion(id);
     }
-
     return (
-        <div id={`${id}`}>
+        <div id={`${id}`} className='flex gap-5 flex-col'>
             <h3>{question}</h3>
-            <Timer handleAnswer={handleAnswer} stopProps={ stop} />
+            <Timer handleAnswer={handleTimer} stopProps={ stop} />
             <ul>
                 {
                     options.map((option) => {
@@ -55,6 +65,7 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
                                     option={option}
                                     uniqueId={uniqueId}
                                     handleSelectedOption={handleSelectedOption}
+                                    disabled={showAnswer}
                                 />
                             </li>
                         )
@@ -69,7 +80,15 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
 
             }
             {
-                showAnswer && <p>{answer}</p>
+                showAnswer ?
+                    <TextWriter text={answerFormat({
+                        answer,
+                        selected: answerText
+                    }, answer === answerText)}
+                        className='text-center break-words'
+                    /> :
+                    <p className='invisible'>{answerFormat({answer: '', selected: ''},false)}</p>
+
             }
         </div>
     )

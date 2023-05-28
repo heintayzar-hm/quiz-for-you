@@ -8,11 +8,11 @@ export interface WelcomeComponentProps {
 const WelcomeComponent = ({handleComponent}: WelcomeComponentProps) => {
 
     return (
-        <div className="h-screen w-full flex items-center justify-center">
+        <div className="h-screen w-full flex items-center justify-center bg-1">
             <ElementAnimation>
                 <div className="flex gap-10 flex-col items-center justify-center text-center " id="component-1">
-                    <span className="text-sm text-tertiary">Welcome</span>
-                <h1 className="text-4xl font-bold font-primary">Let's go</h1>
+                    <span className="text-sm text-tertiary font-tertiary">Welcome</span>
+                <h1 className="text-4xl font-bold font-tertiary">Let's go</h1>
                     <Button text="Start Your Quiz"
                         onClick={handleComponent}
                     ></Button>

@@ -7,13 +7,13 @@ import { Question } from "../../types"
 import { useNavigate } from "react-router-dom"
 import { ROUTES } from "../../constants"
 import { resetScore, setFinished, setTotalScore } from "../../redux/slices/results/resultSlice"
-
+import { Choice } from "../../types"
 const QuizPage = () => {
     const dispatch = useDispatch<AppDispatch>()
     const quizzes = useSelector((state: RootState) => state.quiz.questions)
     const [activeQuiz, setActiveQuiz] = useState(quizzes[0]);
     const navigate = useNavigate();
-
+    const [count, setCount] = useState(1);
     useEffect(() => {
             dispatch(getQuizzes()).then((data) => {
                 if (!data.payload) {
@@ -33,27 +33,28 @@ const QuizPage = () => {
             navigate(ROUTES.RESULTS);
             return;
         }
-
+        setCount(count + 1);
         setActiveQuiz(quizzes[index + 1]);
     }
 
     return (
         <section>
-            <h1>Quiz Page</h1>
-            <main>
+            <main className="h-screen w-full justify-between px-[5%] items-center gap-3 grid grid-cols-1 md:grid-cols-[70%,30%]">
+                <div>
                 {
                         activeQuiz &&
                         <>
                             {
                                  quizzes.map((quiz) => {
-                                    if (quiz.id == activeQuiz.id) {
+                                     if (quiz.id == activeQuiz.id) {
+                                        const correctAnswer = quiz.choices.find((choice) => choice.id === quiz.correct_answer) || {} as Choice;
                                         return (
                                             <Quiz
                                                 key={quiz.id}
                                                 id={quiz.id}
                                                 question={quiz.question}
                                                 options={quiz.choices}
-                                                answer={quiz.correct_answer}
+                                                answer={correctAnswer.value}
                                                 nextQuestion={(id) => handleNextQuestion(id)}
                                             />
                                         )
@@ -62,6 +63,11 @@ const QuizPage = () => {
                             }
                         </>
                 }
+                </div>
+                <div className="font-tertiary text-8xl">
+                    <span>{count}</span> <span>/</span><span>{quizzes.length }</span>
+                </div>
+
             </main>
         </section>
     )

@@ -4,43 +4,47 @@ import WelcomeComponent from "../../components/WelcomeComponent/WelcomeComponent
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useNavigate } from "react-router-dom";
-
+import Explanation from "../../components/Explanation/Explanation";
 const components = ["component-1", "component-2"]
 
 const HomePage = () => {
     const [component, setComponent] = useState(components[0]);
     const name = useSelector((state:RootState) => state.results.name);
     const navigate = useNavigate();
+
+
     const handleComponent = () => {
-        if (name !== "") {
-            navigate("/quiz")
-        }
         const index = components.findIndex((comp) => comp === component);
-        setComponent(components[index + 1]);
+        setComponent(components[index + 1])
     }
     let renderComponent;
 
+
     if (component === components[0]) {
-        return (
-            <WelcomeComponent
+
+           renderComponent= <WelcomeComponent
                 handleComponent={handleComponent}
             />
-        )
-    } else if (component === components[1]) {
-        return (
-            <NameComponent
+
+    } else if (component === components[1] && !name) {
+
+            renderComponent=  <NameComponent
                 handleComponent={handleComponent}
             />
-        )
+    } else {
+        renderComponent = <Explanation
+            changePage={() => navigate("/quiz")}
+        />
     }
 
-
     return (
-        <div className="h-screen w-full flex items-center justify-center">
+        <>
+            <div className="h-screen w-full flex items-center justify-center">
             {
                 renderComponent
             }
-        </div>
+            </div>
+        </>
     )
 }
 

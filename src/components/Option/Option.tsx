@@ -1,8 +1,10 @@
 const Option = ({ ...props }) => {
-    const { option, uniqueId, handleSelectedOption } = props;
+    const { option, uniqueId, handleSelectedOption, disabled } = props;
     return (
         <>
-            <input type="radio" name={`${uniqueId}`} id={option.id.toString()} onClick={() => handleSelectedOption(option)}/>
+            <input
+                disabled={disabled}
+                type="radio" name={`${uniqueId}`} id={option.id.toString()} onClick={() => handleSelectedOption(option)} />
             <label htmlFor={option.id.toString()}>{option.value}</label>
         </>
     )

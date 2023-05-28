@@ -20,10 +20,12 @@ export const lazyRoutes = [
     {
         path: ROUTES.HOME,
         element: <Home />,
+        fallback: <Loading />
     },
     {
         path: ROUTES.RESULTS,
         element: <ResultPage />,
+        fallback: <Loading />
     }
 ]
 

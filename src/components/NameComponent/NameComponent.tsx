@@ -29,7 +29,7 @@ const NameComponent = ({ handleComponent }: NameComponentProps) => {
     }
 
     return (
-        <div className="h-screen w-full flex items-center justify-center flex-col gap-10">
+        <div className="h-screen w-full flex items-center justify-center flex-col gap-10 bg-2">
 
             <TextWriter
                 text="What's your name, Warrior?"

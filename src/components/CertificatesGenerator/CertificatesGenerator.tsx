@@ -1,13 +1,12 @@
 // Example using react-html2canvas
 import html2canvas from "html2canvas";
-import PropTypes from "prop-types";
 import { useRef } from "react";
-
+import Button from "../Button/Button";
+import Template from "../../assets/templates/template.png"
 export interface CertificateGeneratorProps {
-    children: React.ReactNode
+  name: string;
 }
-
-const CertificateGenerator = ({ children }: CertificateGeneratorProps) => {
+const CertificateGenerator = ({ name }: CertificateGeneratorProps) => {
     const certificateRef = useRef<HTMLDivElement>(null);
   const captureCertificate = () => {
       const certificateElement = certificateRef.current
@@ -22,19 +21,17 @@ const CertificateGenerator = ({ children }: CertificateGeneratorProps) => {
   };
 
   return (
-    <div ref={certificateRef}>
-      <h1>Certificate Generator</h1>
-      <div id="certificate">
+    <div className="flex flex-col items-center px-[10%] py-5 gap-5">
+      <div id="certificate" ref={certificateRef} className="relative text-black">
         {/* Certificate template with recipient name overlay */}
-        <img src="/path/to/certificate-template.png" alt="Certificate Template" />
-        <div>{children}</div>
+        <img src={Template} alt="Certificate Template" className=""/>
+        <div className="absolute md:top-[50%] md:left-[40%] md:text-3xl text-lg left-[30%] top-[45%]  text-center">
+          <div>{name}</div>
+        </div>
       </div>
-      <button onClick={captureCertificate}>Download Certificate</button>
+      <Button onClick={captureCertificate} text="Download Certificate"></Button>
     </div>
   );
 };
 
-CertificateGenerator.propTypes = {
-    children: PropTypes.node.isRequired,
-}
 export default CertificateGenerator;

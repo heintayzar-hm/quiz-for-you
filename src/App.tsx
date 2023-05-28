@@ -7,7 +7,7 @@ import Error from "./components/Error/Error"
 const App = ()  => {
   return (
     <>
-    <div className="bg-primary text-white tracking-wider font-secondary">
+    <div className="bg-primary text-white tracking-widest font-primary">
 
           <BrowserRouter>
         <Routes>
