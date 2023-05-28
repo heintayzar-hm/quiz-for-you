@@ -10,10 +10,10 @@ const Explanation = ({changePage}:ExplanationProps) => {
     return (
         <div className="flex flex-col items-center justify-center bg-2 h-screen text-base sm:text-2xl text-white" id={COMPONENTS.Explanation.id}>
             <TextWriter text={COMPONENTS.Explanation.title} className="text-center px-[5%] py-[3%] font-primary"
-                testId="explanation-title"
+                testid="explanation-title"
             />
             <Button onClick={changePage} text={COMPONENTS.Explanation.button}
-                testId="button"
+                testid="button"
             />
         </div>
     )

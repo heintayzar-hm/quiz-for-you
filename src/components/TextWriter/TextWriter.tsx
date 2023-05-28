@@ -7,10 +7,10 @@ export interface TextWriterProps {
     text: string,
     className?: string,
     OnComplete?: () => void,
-    testId?: string,
+    testid?: string,
 }
 
-const TextWriter = ({ text, className, OnComplete, testId }: TextWriterProps) => {
+const TextWriter = ({ text, className, OnComplete, testid }: TextWriterProps) => {
     const textRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const TextWriter = ({ text, className, OnComplete, testId }: TextWriterProps) =>
         <div
             className={`${className} relative`}
             ref={textRef}
-            data-testid={(testId) ? testId : "text-writer"}
+            data-testid={(testid) ? testid : "text-writer"}
         >{
                 text.split(" ").map((char, index) => {
 

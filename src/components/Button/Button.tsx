@@ -8,10 +8,10 @@ export type ButtonProps = {
     className?: string;
     disabled?: boolean;
     type?: "button" | "submit" | "reset";
-    testId?: string;
+    testid?: string;
 }
 
-const Button = ({ text,testId, ...props }: ButtonProps) => {
+const Button = ({ text,testid, ...props }: ButtonProps) => {
     const buttonRef = useRef<HTMLDivElement>(null);
 
     const handleMouseEnter = () => {
@@ -43,7 +43,7 @@ const Button = ({ text,testId, ...props }: ButtonProps) => {
         onMouseEnter={handleMouseEnter}
         className={`${className} relative inline-flex justify-center items-center rounded-full font--item button js-button js-cursor-hover px-7 py-2 -sm:px-7 bg-transparent border border-secondary js-artwork-back pointer-events-none opacity-0 js-loader-button`}
         style={{ transform: "translate(0px, 0px)", pointerEvents: "auto", opacity: "1.25" }}
-        data-testid={(testId) ? testId : "button"}
+        data-testid={(testid) ? testid : "button"}
     >
         <span className="relative z-10 js-button-text">
             <div style={{display: "block", textAlign: "center", position: "relative"}} >
