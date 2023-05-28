@@ -62,13 +62,13 @@ After you're finished please remove all the comments and instructions!
 # 📖 [Quizze] <a name="about-project"></a>
 
 
-**[Quizze]** is a...
+**[Quizze]** is an interactive quiz application designed and built using ReactJS, TypeScript, and Redux Toolkit. It features multiple-choice questions with feedback, a timer for each question, and a final score display. Users can save their score as a PNG image for sharing on social media. The application utilizes TailwindCSS for styling and is implemented in TypeScript for type safety.
+..
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-Quizze is an interactive quiz application designed and built using ReactJS, TypeScript, and Redux Toolkit. It features multiple-choice questions with feedback, a timer for each question, and a final score display. Users can save their score as a PNG image for sharing on social media. The application utilizes TailwindCSS for styling and is implemented in TypeScript for type safety.
 
 <details>
   <summary>Client</summary>
