@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useNavigate } from "react-router-dom";
 import Explanation from "../../components/Explanation/Explanation";
-import { ROUTES } from "../../constants";
+import { COMPONENTS, ROUTES } from "../../constants";
+import { textToSpeech } from "../../helper";
 const components = ["component-1", "component-2"]
 
 const HomePage = () => {
@@ -16,7 +17,18 @@ const HomePage = () => {
 
     const handleComponent = () => {
         const index = components.findIndex((comp) => comp === component);
-        setComponent(components[index + 1])
+        // additional voice speech
+        const onStart = () =>  {
+            setComponent(components[index+1])
+        }
+        if (index + 1 === 1 && !name) {
+            textToSpeech(
+                COMPONENTS.NameComponent.title,
+                onStart
+            )
+        } else {
+             onStart();
+        }
     }
     let renderComponent;
 

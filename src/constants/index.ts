@@ -21,7 +21,7 @@ export const APP = {
     animation: {
         y: '-100px',
     },
-    requiredMarksPercent: 80,
+    requiredMarksPercent: 10,
     certifcateName: "certificate.png"
 }
 

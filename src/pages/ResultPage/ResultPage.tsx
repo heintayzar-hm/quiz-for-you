@@ -1,3 +1,4 @@
+// special page that is not affected by the app structure yet!
 import { useNavigate } from "react-router-dom";
 import { APP, COMPONENTS, ROUTES } from "../../constants";
 import { RootState } from "../../redux/store";
@@ -19,7 +20,7 @@ const ResultPage = () => {
         }
     })
     const percentage = (score / total) * 100;
-    const success = percentage > APP.requiredMarksPercent;
+    const success = percentage >= APP.requiredMarksPercent;
     const background = success ? "bg-5" : "bg-5";
     return (
 
@@ -29,7 +30,7 @@ const ResultPage = () => {
                     {
                         success ?
                             <div className="flex gap-5 flex-col">
-                                <TextWriter text={COMPONENTS.RESULTS.successText}></TextWriter>
+                                <TextWriter text={COMPONENTS.RESULTS.successText} delay={1}></TextWriter>
                                 <ElementAnimation>
                                     <div className="flex gap-5">
                                         <span><span>You got:  </span><span>{score}</span> / <span>{total}</span></span>
@@ -41,7 +42,7 @@ const ResultPage = () => {
                             </div>
                             :
                             <div className="flex gap-5 flex-col">
-                                <TextWriter text={COMPONENTS.RESULTS.failText}></TextWriter>
+                                <TextWriter text={COMPONENTS.RESULTS.failText} delay={1}></TextWriter>
                                 <ElementAnimation>
                                     <div className="flex gap-5 flex-col">
                                         <span><span>You got:  </span><span>{score}</span> / <span>{total}</span>  <span>({percentage} %)</span></span>

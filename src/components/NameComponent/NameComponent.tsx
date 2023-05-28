@@ -36,13 +36,14 @@ const NameComponent = ({ handleComponent }: NameComponentProps) => {
                 text={COMPONENTS.NameComponent.title}
                 className="sm:text-4xl text-xl"
                 OnComplete={showInputHandler}
+                delay={1}
             />
             {
                 showInput ? (
                     <ElementAnimation>
                         <div className="flex flex-col gap-10 sm:flex ">
                             <Input type="text"
-                                onChange={nameHandler} value={name} testId="name-input"
+                                onChange={nameHandler} value={name} testid="name-input"
                             />
                         <Button text={COMPONENTS.NameComponent.button}
                             onClick={submitHandler}
