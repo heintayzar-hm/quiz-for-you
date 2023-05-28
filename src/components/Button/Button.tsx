@@ -1,6 +1,5 @@
 import { gsap } from "gsap";
 import { useRef } from "react";
-import { APP } from "../../constants";
 import { v4 } from "uuid";
 export type ButtonProps = {
     text: string;
@@ -17,10 +16,10 @@ const Button = ({ text,testid, ...props }: ButtonProps) => {
     const handleMouseEnter = () => {
         if (!buttonRef.current) return;
         gsap.to(buttonRef.current.children, {
-          transform: `translate(0px,${APP.animation.y} )`,
-            duration: 0.3,
+          transform: `translate(0px,-10px)`,
+            duration: 0.1,
             opacity: 0,
-            stagger: 0.05,
+            stagger: 0.02,
           onComplete: () => {
             // Animation completed logic
             if (!buttonRef.current) return;
@@ -30,8 +29,8 @@ const Button = ({ text,testid, ...props }: ButtonProps) => {
               }, {
                   transform: "translate(0px, 0px)",
                   opacity: 1,
-                  duration: 0.2,
-                    stagger: 0.05,
+                  duration: 0.1,
+                    stagger: 0.01,
               });
           },
         });
@@ -41,7 +40,7 @@ const Button = ({ text,testid, ...props }: ButtonProps) => {
     const { className } = props;
     return <button {...props}
         onMouseEnter={handleMouseEnter}
-        className={`${className} relative inline-flex justify-center items-center rounded-full font--item button js-button js-cursor-hover px-7 py-2 -sm:px-7 bg-transparent border border-secondary js-artwork-back pointer-events-none opacity-0 js-loader-button`}
+        className={`${className} relative inline-flex hover:bg-primary hover:text-white justify-center items-center rounded-full font--item button js-button js-cursor-hover px-7 py-2 -sm:px-7 bg-transparent border border-secondary js-artwork-back pointer-events-none opacity-0 js-loader-button`}
         style={{ transform: "translate(0px, 0px)", pointerEvents: "auto", opacity: "1.25" }}
         data-testid={(testid) ? testid : "button"}
     >

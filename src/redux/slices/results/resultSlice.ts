@@ -23,6 +23,7 @@ const resetScoreFunc = (state: ResultsState) => {
             ...state,
             score: 0,
             total: 0,
+            finished: false,
         }
     )
 }

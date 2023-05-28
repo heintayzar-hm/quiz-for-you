@@ -8,9 +8,10 @@ export interface TextWriterProps {
     className?: string,
     OnComplete?: () => void,
     testid?: string,
+    delay?: number,
 }
 
-const TextWriter = ({ text, className, OnComplete, testid }: TextWriterProps) => {
+const TextWriter = ({ text, className, OnComplete, testid, delay }: TextWriterProps) => {
     const textRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -19,11 +20,11 @@ const TextWriter = ({ text, className, OnComplete, testid }: TextWriterProps) =>
         gsap.fromTo(textElement.children, {
             opacity: 0,
             transform: `translateY(${APP.animation.y})`,
-
         }, {
             opacity: 1,
             transform: "translateY(0px)",
             duration: 1,
+            delay: delay,
             stagger: 0.1,
             onComplete: () => {
                 if (OnComplete) OnComplete();

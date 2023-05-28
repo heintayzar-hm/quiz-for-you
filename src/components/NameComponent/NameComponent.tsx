@@ -36,6 +36,7 @@ const NameComponent = ({ handleComponent }: NameComponentProps) => {
                 text={COMPONENTS.NameComponent.title}
                 className="sm:text-4xl text-xl"
                 OnComplete={showInputHandler}
+                delay={1}
             />
             {
                 showInput ? (
