@@ -41,7 +41,9 @@ const NameComponent = ({ handleComponent }: NameComponentProps) => {
                 showInput ? (
                     <ElementAnimation>
                         <div className="flex flex-col gap-10 sm:flex ">
-                        <Input type="text" onChange={nameHandler} value={name}  />
+                            <Input type="text"
+                                onChange={nameHandler} value={name} testId="name-input"
+                            />
                         <Button text={COMPONENTS.NameComponent.button}
                             onClick={submitHandler}
                         />

@@ -39,7 +39,7 @@ const QuizPage = () => {
 
     return (
         <section>
-            <main className="h-screen w-full justify-between px-[5%] items-center gap-3 grid grid-cols-1 md:grid-cols-[70%,30%]">
+            <main className="h-screen w-full justify-between px-[5%] items-center gap-3 grid grid-cols-1 md:grid-cols-[70%,30%] bg-6">
                 <div>
                 {
                         activeQuiz &&

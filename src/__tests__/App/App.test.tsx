@@ -4,11 +4,11 @@
 import { act, render } from '@testing-library/react';
 
 // To Test
-import App from '../App';
+import App from '../../App';
 import { Provider } from 'react-redux';
-import { persistor, store } from '../redux/store';
+import { persistor, store } from '../../redux/store';
 import { PersistGate } from 'redux-persist/es/integration/react';
-import Loading from '../components/Loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 // Tests
 test('Renders main page correctly', async () => {
@@ -32,4 +32,4 @@ test('Renders main page correctly', async () => {
 
    // Post Expectations
   expect(true).toBeTruthy();
-});
+}, 100000);

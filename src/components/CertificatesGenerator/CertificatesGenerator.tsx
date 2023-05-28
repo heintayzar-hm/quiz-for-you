@@ -31,7 +31,7 @@ const CertificateGenerator = ({ name, text }: CertificateGeneratorProps) => {
           <div>{name}</div>
         </div>
       </div>
-      <Button onClick={captureCertificate} text={text}></Button>
+      <Button onClick={captureCertificate} text={text} className="bg-tertiary hover:bg-primary"></Button>
     </div>
   );
 };

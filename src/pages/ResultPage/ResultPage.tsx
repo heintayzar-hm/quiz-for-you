@@ -20,7 +20,7 @@ const ResultPage = () => {
     })
     const percentage = (score / total) * 100;
     const success = percentage > APP.requiredMarksPercent;
-    const background = success ? "bg-4" : "bg-5";
+    const background = success ? "bg-5" : "bg-5";
     return (
 
             <div className={`h-screen w-full grid grid-cols-1 md:grid-cols-[30%_70%] ${background}`}>
@@ -29,13 +29,25 @@ const ResultPage = () => {
                     {
                         success ?
                             <div className="flex gap-5 flex-col">
-                                <TextWriter text={ COMPONENTS.RESULTS.successText}></TextWriter>
+                                <TextWriter text={COMPONENTS.RESULTS.successText}></TextWriter>
+                                <ElementAnimation>
+                                    <div className="flex gap-5">
+                                        <span><span>You got:  </span><span>{score}</span> / <span>{total}</span></span>
+                                    </div>
+                                </ElementAnimation>
                                 <ElementAnimation> <Button onClick={() => setShowCertificate(true)} text={COMPONENTS.RESULTS.getYourCertificate} /></ElementAnimation>
+
                                 <Button onClick={() => navigate(ROUTES.HOME)} text={COMPONENTS.RESULTS.retakeButton } />
                             </div>
                             :
                             <div className="flex gap-5 flex-col">
                                 <TextWriter text={COMPONENTS.RESULTS.failText}></TextWriter>
+                                <ElementAnimation>
+                                    <div className="flex gap-5 flex-col">
+                                        <span><span>You got:  </span><span>{score}</span> / <span>{total}</span>  <span>({percentage} %)</span></span>
+                                        <span>Minimum percent to pass:  <span>{APP.requiredMarksPercent}</span> % </span>
+                                    </div>
+                                </ElementAnimation>
                                 <ElementAnimation> <Button onClick={() => navigate(ROUTES.HOME)} text={ COMPONENTS.RESULTS.retakeButton } /></ElementAnimation>
                             </div>
                     }
@@ -48,7 +60,7 @@ const ResultPage = () => {
                     </ElementAnimation>
                     :
                     <></>
-                    }
+            }
         </div>
     )
 }

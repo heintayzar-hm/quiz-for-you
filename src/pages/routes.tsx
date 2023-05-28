@@ -3,9 +3,6 @@ import { lazy } from "react"
 import { ROUTES } from "../constants"
 import Loading from "../components/Loading/Loading"
 
-export const routes = [
-
-]
 
 const QuizPage = lazy(() => import("./QuizPage/QuizPage"))
 const Home = lazy(() => import("./HomePage/HomePage"))

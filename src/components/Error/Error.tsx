@@ -7,7 +7,7 @@ const Error = () => {
             <p className="text-2xl">Oops!</p> <br />
             <p>Something went wrong!!! Please try again later.</p>
             <p>Or you can reload the page.
-                    <Button className="mx-3"  onClick={() => window.location.reload()} text="Reload"/>
+                    <Button className="mx-3"  onClick={() => window.location.reload()} text="Reload" />
             </p>
             <p>If this issue continues, please contact the email: <a href={`mailto:${APP.email}`} className="text-secondary hover:underline">{ APP.email}</a></p>
         </div>
