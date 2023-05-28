@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Libre+Baskerville&family=Mukta:wght@200&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-1 {
+  background-image: url("./assets/background/bg-1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-2 {
+  background-image: url("./assets/background/bg-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-3 {
+  background-image: url("./assets/background/bg-3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-4 {
+  background-image: url("./assets/background/bg-4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: saturation;
+  background-color: rgba(132, 141, 248, 0.5);
+}
+
+.bg-5 {
+  background-image: url("./assets/background/bg-5.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: saturation;
+  background-color: rgba(132, 141, 248, 0.5);
+}
+
+.bg-6 {
+  background-image: url("./assets/background/bg-6.jpg");
+  background-size: cover;
+  background-position: center;
+}
