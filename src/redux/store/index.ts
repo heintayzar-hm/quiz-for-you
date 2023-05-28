@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import { persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 import rootReducer from './rootReducer';
 import { useDispatch } from 'react-redux';
 import persistStore from 'redux-persist/es/persistStore';
@@ -15,7 +14,7 @@ const store = configureStore({
         ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
       }
     }
-  ).concat(thunk, logger),
+  ).concat(thunk),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

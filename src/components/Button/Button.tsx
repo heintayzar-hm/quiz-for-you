@@ -1,5 +1,4 @@
 import { gsap } from "gsap";
-import PropTypes from "prop-types";
 import { useRef } from "react";
 import { APP } from "../../constants";
 import { v4 } from "uuid";
@@ -70,8 +69,5 @@ const Button = ({ text, ...props }: ButtonProps) => {
     </button>;
     };
 
-Button.propTypes = {
-    text: PropTypes.string.isRequired,
-}
 
 export default Button;

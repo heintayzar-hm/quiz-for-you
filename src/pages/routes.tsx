@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React from "react"
+import { lazy } from "react"
 import { ROUTES } from "../constants"
 import Loading from "../components/Loading/Loading"
 
@@ -7,9 +7,9 @@ export const routes = [
 
 ]
 
-const QuizPage = React.lazy(() => import("./QuizPage/QuizPage"))
-const Home = React.lazy(() => import("./HomePage/HomePage"))
-const ResultPage = React.lazy(() => import("./ResultPage/ResultPage"))
+const QuizPage = lazy(() => import("./QuizPage/QuizPage"))
+const Home = lazy(() => import("./HomePage/HomePage"))
+const ResultPage = lazy(() => import("./ResultPage/ResultPage"))
 
 export const lazyRoutes = [
     {
