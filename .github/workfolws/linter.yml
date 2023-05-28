@@ -32,6 +32,19 @@ jobs:
           npm install
       - name: Stylelint Report
         run: npx stylelint "**/*.{css,scss}"
+   tests:
+    name: Jest
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "18.x"
+      - name: Setup Jest
+        run: |
+          npm install
+      - name: Jest Report
+        run: npm run test
   nodechecker:
     name: node_modules checker
     runs-on: ubuntu-22.04
