@@ -1,6 +1,6 @@
 import { APP } from "../../constants";
 import Button from "../Button/Button";
-
+// Special page that is not affected by the app structure and will not!!
 const Error = () => {
     return (
         <div className="h-screen w-full flex items-center justify-center bg-primary text-white flex-col gap-3">

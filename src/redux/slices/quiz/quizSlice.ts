@@ -3,16 +3,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { SLICES } from '../../../constants';
 import { getQuizzes, handleGetQuizzesFulfilled, handleGetQuizzesPending, handleGetQuizzesRejected } from './thunk';
-import { Question, QuizState } from '../../../types';
 
-const initialState: QuizState = {
-  loading: false,
-  questions: [
-
-  ] as Question[],
-  error: "",
-}
-
+const initialState = SLICES.QUIZ_SLICE.INITIAL_STATE;
 const quizSlice = createSlice({
   name: SLICES.QUIZ_SLICE.NAME,
   initialState,

@@ -4,13 +4,14 @@ import resultReducer from "../slices/results/resultSlice";
 import storage from 'redux-persist/lib/storage'
 // store in redux persist
 import { persistReducer } from "redux-persist";
+import { SLICES } from "../../constants";
 
 const persistConfig = {
 	// Root
-	key: "root",
+	key: SLICES.ROOT_SLICE.NAME,
 	storage,
 	whitelist: [
-		"results",
+		SLICES.RESULTS_SLICE.NAME,
 	],
 };
 

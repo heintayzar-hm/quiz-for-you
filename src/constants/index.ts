@@ -1,7 +1,18 @@
-import { ResultsState } from '../types';
+import { Question, QuizState, ResultsState } from '../types';
 export const SLICES = {
+    ROOT_SLICE: {
+        NAME: 'root',
+    },
     QUIZ_SLICE: {
         NAME: 'quiz',
+        INITIAL_STATE: {
+            loading: false,
+            questions: [] as Question[],
+            error: "",
+        } as QuizState,
+        THUNKS_NAMES: {
+            GET_QUIZZES: 'quiz/getQuizzes',
+        }
     },
     RESULTS_SLICE: {
         NAME: 'results',
@@ -63,8 +74,11 @@ export const COMPONENTS = {
     },
     Quiz: {
         id: "component-4",
+        skippable: false,
         button1: "Submit",
-        button2: "Next"
+        button2: "Next",
+        canSkipAlertText: "Are you sure you want to skip this question?",
+        cannotSkipAlertText: "You cannot skip this question.",
     },
     RESULTS: {
         id: "component-5",

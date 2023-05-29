@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { HashRouter, Route, Routes } from "react-router-dom"
 import { invalidRoute, lazyRoutes } from "./pages/routes"
 import { Suspense } from "react"
 import {withErrorBoundary} from 'react-error-boundary'
@@ -8,8 +8,8 @@ const App = ()  => {
   return (
     <>
     <div className="bg-primary text-white tracking-widest font-primary">
-
-          <BrowserRouter>
+            {/* Instead of Browser Router let's use hashRouter for all platforms */}
+          <HashRouter>
         <Routes>
           {
             // lazy routes
@@ -30,7 +30,7 @@ const App = ()  => {
           }
 
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
 
     </>
