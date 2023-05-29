@@ -1,6 +1,7 @@
 import { PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { Question, QuizState } from "../../../types";
 import { getQuizzesFromApi } from "../../api/quizApi";
+import { SLICES } from "../../../constants";
 
 export const getQuizzes = createAsyncThunk<
   Question[],
@@ -9,7 +10,7 @@ export const getQuizzes = createAsyncThunk<
     rejectValue: string;
   }
   >(
-    'quiz/getQuizzes',
+    SLICES.QUIZ_SLICE.THUNKS_NAMES.GET_QUIZZES,
     async (_, { rejectWithValue }) => {
       const response = await getQuizzesFromApi();
       if (response.length !== 0) {

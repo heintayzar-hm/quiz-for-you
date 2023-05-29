@@ -1,3 +1,5 @@
+import { COMPONENTS } from "../constants";
+
 export const getCurrentTime = () => {
     const date = new Date();
     return date.getTime();
@@ -53,4 +55,15 @@ export const textToSpeech = (text: string, onStart?: () => void ) => {
     }).catch(() => {
         onStart ? onStart() : null;
     });
+}
+
+export const guardQuestion = (question: string) => {
+    if (!question) {
+        if (COMPONENTS.Quiz.skippable) {
+            alert(COMPONENTS.Quiz.canSkipAlertText)
+        } else {
+            alert(COMPONENTS.Quiz.cannotSkipAlertText)
+            return;
+        }
+    }
 }

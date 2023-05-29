@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { increaseScore } from '../../redux/slices/results/resultSlice';
 import { AppDispatch } from '../../redux/store';
 import TextWriter from '../TextWriter/TextWriter';
-import { answerFormat } from '../../helper';
+import { answerFormat, guardQuestion } from '../../helper';
 import { COMPONENTS } from '../../constants';
 
 export interface QuizProps {
@@ -32,6 +32,8 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
     } as Choice);
 
     const handleAnswer = () => {
+        // guard for skip or not!!
+        guardQuestion(selectedOption.value)
         handleTimer()
         if (selectedOption.value === answer) {
             dispatch(increaseScore())
@@ -75,9 +77,9 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
             </ul>
             {
                 showAnswer ?
-                    <Button type='submit' onClick={handleQuestion} text={ COMPONENTS.Quiz.button2} />
+                    <Button type='button' onClick={handleQuestion} text={ COMPONENTS.Quiz.button2} />
                 :
-                    <Button type='button' onClick={handleAnswer} text={COMPONENTS.Quiz.button1} />
+                    <Button type='submit' onClick={handleAnswer} text={COMPONENTS.Quiz.button1} />
 
             }
             {
