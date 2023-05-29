@@ -58,12 +58,15 @@ export const textToSpeech = (text: string, onStart?: () => void ) => {
 }
 
 export const guardQuestion = (question: string) => {
+    let shouldReturn;
     if (!question) {
         if (COMPONENTS.Quiz.skippable) {
             alert(COMPONENTS.Quiz.canSkipAlertText)
+            shouldReturn = false;
         } else {
             alert(COMPONENTS.Quiz.cannotSkipAlertText)
-            return;
+            shouldReturn = true;
         }
     }
+    return shouldReturn;
 }
