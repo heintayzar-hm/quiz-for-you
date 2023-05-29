@@ -33,7 +33,9 @@ const Quiz = ({ question, options, answer,nextQuestion, id }: QuizProps) => {
 
     const handleAnswer = () => {
         // guard for skip or not!!
-        guardQuestion(selectedOption.value)
+        if (guardQuestion(selectedOption.value)) {
+            return;
+        }
         handleTimer()
         if (selectedOption.value === answer) {
             dispatch(increaseScore())
